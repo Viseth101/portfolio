@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #7c3aed;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #09090f;
+  color: #f8fafc;
+}
+
+/* Thin accent scrollbar for modern browsers. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #7c3aed #0f0f1a;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0f0f1a;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border-radius: 9999px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
