@@ -18,7 +18,7 @@ body {
 }
 
 .dark body {
-  background: #09090f;
+  background: #111526;
   color: #f8fafc;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 .dark * {
-  scrollbar-color: #7c3aed #0f0f1a;
+  scrollbar-color: #7c3aed #171c30;
 }
 
 *::-webkit-scrollbar {
@@ -42,7 +42,7 @@ body {
 }
 
 .dark *::-webkit-scrollbar-track {
-  background: #0f0f1a;
+  background: #171c30;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -103,6 +103,15 @@ body {
   }
   50% {
     transform: translate(-50%, 8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 

@@ -11,9 +11,9 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          primary: "#09090f",
-          secondary: "#0f0f1a",
-          card: "#13131f",
+          primary: "#111526",
+          secondary: "#171c30",
+          card: "#1d2338",
         },
         accent: {
           primary: "#7c3aed",
@@ -25,7 +25,7 @@ const config: Config = {
           secondary: "#94a3b8",
           muted: "#475569",
         },
-        border: "#1e1b4b",
+        border: "#2a3354",
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],

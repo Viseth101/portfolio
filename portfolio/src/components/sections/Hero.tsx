@@ -131,7 +131,7 @@ export default function Hero() {
           className="mt-8 flex items-center justify-center gap-3"
         >
           <a
-            href="https://github.com/YOUR_GITHUB_USERNAME"
+            href="https://github.com/Viseth101"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -140,7 +140,7 @@ export default function Hero() {
             <Github className="h-5 w-5" />
           </a>
           <a
-            href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME"
+            href="https://www.linkedin.com/in/udtarakviseth-lay-774858373/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -149,7 +149,7 @@ export default function Hero() {
             <Linkedin className="h-5 w-5" />
           </a>
           <a
-            href="mailto:your.email@example.com"
+            href="mailto:udtarakvisethlay@gmail.com"
             aria-label="Email"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-text-secondary transition-colors hover:text-accent-primary"
           >

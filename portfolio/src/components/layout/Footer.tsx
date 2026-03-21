@@ -10,8 +10,12 @@ const links = [
 
 const socials = [
   { label: "GitHub", href: "https://github.com/Viseth101", icon: Github },
-  { label: "LinkedIn", href: "https://linkedin.com", icon: Linkedin },
-  { label: "Email", href: "mailto:you@example.com", icon: Mail },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/udtarakviseth-lay-774858373/",
+    icon: Linkedin,
+  },
+  { label: "Email", href: "mailto:udtarakvisethlay@gmail.com", icon: Mail },
 ];
 
 export default function Footer() {
