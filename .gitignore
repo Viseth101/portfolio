@@ -137,3 +137,25 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Environment variables — never commit these
+.env
+.env.local
+.env.production
+
+# Sanity
+studio/.env
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# Next.js
+.next/
+out/
+
+# Build output
+dist/
+
+# Resume (keep out of git, serve from /public or a URL)
+public/resume.pdf
