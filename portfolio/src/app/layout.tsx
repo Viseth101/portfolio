@@ -41,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark h-full antialiased">
+    <html lang="en" className="h-full antialiased">
       <body
         className={`${inter.variable} min-h-full bg-slate-50 text-slate-900 font-sans dark:bg-background-primary dark:text-text-primary`}
       >

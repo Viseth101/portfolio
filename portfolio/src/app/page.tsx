@@ -1,6 +1,8 @@
 "use client";
 
 import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Skills from "@/components/sections/Skills";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -11,20 +13,8 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       <Hero />
-
-      <section
-        id="about"
-        className="flex min-h-screen items-center justify-center border-b border-border/60 px-6"
-      >
-        <h2 className="text-4xl font-bold tracking-tight text-accent-primary">About Section</h2>
-      </section>
-
-      <section
-        id="skills"
-        className="flex min-h-screen items-center justify-center border-b border-border/60 px-6"
-      >
-        <h2 className="text-4xl font-bold tracking-tight text-accent-primary">Skills Section</h2>
-      </section>
+      <About />
+      <Skills />
 
       <section
         id="projects"

@@ -13,6 +13,11 @@ html {
 }
 
 body {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.dark body {
   background: #09090f;
   color: #f8fafc;
 }
@@ -20,6 +25,10 @@ body {
 /* Thin accent scrollbar for modern browsers. */
 * {
   scrollbar-width: thin;
+  scrollbar-color: #7c3aed #e2e8f0;
+}
+
+.dark * {
   scrollbar-color: #7c3aed #0f0f1a;
 }
 
@@ -29,6 +38,10 @@ body {
 }
 
 *::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+.dark *::-webkit-scrollbar-track {
   background: #0f0f1a;
 }
 

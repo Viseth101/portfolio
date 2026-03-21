@@ -15,6 +15,7 @@ export interface Skill {
   name: string;
   category: string;
   icon?: string;
+  proficiency?: "proficient" | "learning";
 }
 
 export interface Experience {
