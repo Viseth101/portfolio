@@ -8,6 +8,7 @@ export interface Project {
   githubUrl: string;
   liveUrl: string;
   status: string;
+  type?: "featured" | "course" | "personal";
 }
 
 export interface Skill {

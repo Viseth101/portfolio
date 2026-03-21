@@ -1,5 +1,11 @@
 import type { Experience, Project, Skill } from "@/types";
 
+/*
+  This file is now used as fallback data only. Live content is
+  fetched from Sanity CMS. Keep this file updated as a backup
+  in case Sanity is unavailable during build.
+*/
+
 export const projects: Project[] = [
   {
     id: "threatwatch",
@@ -28,6 +34,36 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Viseth101/threatwatch",
     liveUrl: "https://threatwatch-demo.vercel.app",
     status: "live",
+    type: "featured",
+  },
+  {
+    id: "silapakorn-wc-map",
+    title: "Silapakorn Sanam Chan WC Map",
+    description:
+      "Interactive campus map for locating restrooms across Silapakorn University's Sanam Chan campus",
+    longDescription:
+      "A full-stack web application built as a course project to solve a real campus navigation problem. Students and visitors can view an interactive Google Maps interface pinpointing every restroom location across the Sanam Chan campus, complete with photos of each facility uploaded via Cloudinary. Built with a Node.js/Express backend, a cloud-hosted MySQL database on Railway, and vanilla JS on the frontend.",
+    tech: [
+      "Node.js",
+      "Express",
+      "Google Maps API",
+      "MySQL",
+      "Railway",
+      "Cloudinary",
+      "Vanilla JS",
+      "CSS",
+    ],
+    features: [
+      "Interactive Google Maps with custom restroom markers",
+      "Photo previews for each facility via Cloudinary",
+      "Cloud MySQL database hosted on Railway",
+      "REST API backend with Node.js and Express",
+      "Mobile responsive for on-campus use",
+    ],
+    githubUrl: "",
+    liveUrl: "",
+    status: "live",
+    type: "course",
   },
   {
     id: "coming-soon-1",

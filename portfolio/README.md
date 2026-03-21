@@ -34,3 +34,40 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Content Management
+
+This portfolio now supports a headless CMS using Sanity. That means you can update projects, profile content, and skill data from a web dashboard without editing source code.
+
+### Log into Sanity Studio
+
+1. Start your app with `npm run dev`.
+2. Open `http://localhost:3000/studio`.
+3. Sign in with your Sanity account.
+4. You will see document types like Project, Skill, Profile, and Experience.
+
+### Add a New Project
+
+1. Go to **Project** in Studio.
+2. Click **Create new document**.
+3. Fill in required fields:
+	- `title`
+	- `slug` (generated from title)
+	- `description`
+	- `longDescription`
+4. Add optional fields (tech, features, links, image, order, status, type).
+5. Click **Publish**.
+6. Reload the portfolio page to see your update.
+
+### Toggle Open to Work Badge (No Code)
+
+1. Open the **Profile** document in Studio.
+2. Turn `openToWork` on/off.
+3. Update `lookingFor` with your target internship window.
+4. Publish changes.
+
+### Update Resume URL
+
+1. Open the **Profile** document.
+2. Edit `resumeUrl` with your hosted PDF link (Google Drive, Dropbox, etc.).
+3. Publish changes.
