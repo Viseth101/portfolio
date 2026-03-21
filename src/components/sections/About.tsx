@@ -7,6 +7,7 @@
  * 3) Supporting stats and resume CTA.
  */
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -22,8 +23,15 @@ export default function About() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto"
         >
-          <div className="flex h-56 w-56 items-center justify-center rounded-[2rem] border border-accent-primary/50 bg-gradient-to-br from-accent-primary to-accent-secondary shadow-lg shadow-accent-primary/20">
-            <span className="text-6xl font-extrabold tracking-tight text-white">UL</span>
+          <div className="h-56 w-56 overflow-hidden rounded-[2rem] border border-accent-primary/50 shadow-lg shadow-accent-primary/20">
+            <Image
+              src="/profile.jpg"
+              alt="Udtarakviseth Lay profile photo"
+              width={224}
+              height={224}
+              className="h-full w-full object-cover"
+              priority
+            />
           </div>
         </motion.div>
 

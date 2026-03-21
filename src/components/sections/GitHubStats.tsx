@@ -62,15 +62,22 @@ function GitHubStatCard({ card, isDark }: { card: StatCardData; isDark: boolean 
   }, [card.src]);
 
   useEffect(() => {
-    if (isLoaded) return;
+    if (isLoaded || isUnavailable) {
+      return;
+    }
 
-    const timeout = setTimeout(() => {
+    const timer = window.setTimeout(() => {
+      if (imageSrc !== card.fallbackSrc) {
+        setImageSrc(card.fallbackSrc);
+        return;
+      }
+
       setIsUnavailable(true);
       setIsLoaded(true);
-    }, 9000);
+    }, 12000);
 
-    return () => clearTimeout(timeout);
-  }, [isLoaded]);
+    return () => window.clearTimeout(timer);
+  }, [card.fallbackSrc, imageSrc, isLoaded, isUnavailable]);
 
   return (
     <article
@@ -127,7 +134,7 @@ function GitHubStatCard({ card, isDark }: { card: StatCardData; isDark: boolean 
           width={760}
           height={340}
           unoptimized={true}
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
           onError={() => {
             if (imageSrc !== card.fallbackSrc) {
               setImageSrc(card.fallbackSrc);
