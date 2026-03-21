@@ -13,10 +13,12 @@ type StatCardData = {
   title: string;
   src: string;
   fallbackSrc: string;
+  externalUrl: string;
   alt: string;
 };
 
 function buildStatCards(isDark: boolean): StatCardData[] {
+  const username = "Viseth101";
   const statsBg = isDark ? "161a29" : "f8fafc";
   const statsText = isDark ? "94a3b8" : "334155";
   const streakNums = isDark ? "f8fafc" : "0f172a";
@@ -24,22 +26,25 @@ function buildStatCards(isDark: boolean): StatCardData[] {
   return [
     {
       title: "GitHub Stats",
-      src: `https://github-readme-stats.vercel.app/api?username=Viseth101&show_icons=true&hide_border=true&bg_color=${statsBg}&title_color=7c3aed&icon_color=a78bfa&text_color=${statsText}&ring_color=7c3aed`,
+      src: `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_border=true&cache_seconds=3600&bg_color=${statsBg}&title_color=7c3aed&icon_color=a78bfa&text_color=${statsText}&ring_color=7c3aed`,
       fallbackSrc:
-        "https://github-readme-stats.vercel.app/api?username=Viseth101&show_icons=true&hide_border=true",
+        `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_border=true`,
+      externalUrl: `https://github.com/${username}`,
       alt: "Viseth101 GitHub overall statistics",
     },
     {
       title: "Top Languages",
-      src: `https://github-readme-stats.vercel.app/api/top-langs/?username=Viseth101&layout=compact&hide_border=true&bg_color=${statsBg}&title_color=7c3aed&text_color=${statsText}`,
+      src: `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&hide_border=true&cache_seconds=3600&bg_color=${statsBg}&title_color=7c3aed&text_color=${statsText}`,
       fallbackSrc:
-        "https://github-readme-stats.vercel.app/api/top-langs/?username=Viseth101&layout=compact&hide_border=true",
+        `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&hide_border=true`,
+      externalUrl: `https://github.com/${username}?tab=repositories`,
       alt: "Viseth101 top programming languages",
     },
     {
       title: "GitHub Streak",
-      src: `https://github-readme-streak-stats.herokuapp.com?user=Viseth101&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}`,
-      fallbackSrc: `https://streak-stats.demolab.com?user=Viseth101&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}`,
+      src: `https://streak-stats.demolab.com?user=${username}&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}`,
+      fallbackSrc: `https://github-readme-streak-stats.herokuapp.com?user=${username}&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}`,
+      externalUrl: `https://github.com/${username}`,
       alt: "Viseth101 GitHub contribution streak",
     },
   ];
@@ -48,11 +53,24 @@ function buildStatCards(isDark: boolean): StatCardData[] {
 function GitHubStatCard({ card, isDark }: { card: StatCardData; isDark: boolean }) {
   const [imageSrc, setImageSrc] = useState(card.src);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isUnavailable, setIsUnavailable] = useState(false);
 
   useEffect(() => {
     setImageSrc(card.src);
     setIsLoaded(false);
+    setIsUnavailable(false);
   }, [card.src]);
+
+  useEffect(() => {
+    if (isLoaded) return;
+
+    const timeout = setTimeout(() => {
+      setIsUnavailable(true);
+      setIsLoaded(true);
+    }, 9000);
+
+    return () => clearTimeout(timeout);
+  }, [isLoaded]);
 
   return (
     <article
@@ -76,6 +94,22 @@ function GitHubStatCard({ card, isDark }: { card: StatCardData; isDark: boolean 
             : "border-slate-200 bg-slate-50",
         ].join(" ")}
       >
+        {isUnavailable ? (
+          <div className="flex min-h-[220px] flex-col items-center justify-center gap-3 px-4 py-8 text-center">
+            <p className={isDark ? "text-sm text-text-secondary" : "text-sm text-slate-600"}>
+              GitHub stats are temporarily unavailable.
+            </p>
+            <a
+              href={card.externalUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-10 items-center justify-center rounded-full border border-accent-primary/40 px-4 py-2 text-sm font-semibold text-accent-primary transition-colors hover:bg-accent-primary/10"
+            >
+              Open on GitHub
+            </a>
+          </div>
+        ) : null}
+
         {!isLoaded ? (
           <div
             className={[
@@ -92,7 +126,7 @@ function GitHubStatCard({ card, isDark }: { card: StatCardData; isDark: boolean 
           alt={card.alt}
           width={760}
           height={340}
-          unoptimized
+          unoptimized={true}
           onLoadingComplete={() => setIsLoaded(true)}
           onError={() => {
             if (imageSrc !== card.fallbackSrc) {
@@ -100,10 +134,12 @@ function GitHubStatCard({ card, isDark }: { card: StatCardData; isDark: boolean 
               return;
             }
 
+            setIsUnavailable(true);
             setIsLoaded(true);
           }}
           className={[
             "h-auto w-full transition-opacity duration-300",
+            isUnavailable ? "hidden" : "",
             isLoaded ? "opacity-100" : "opacity-0",
           ].join(" ")}
         />

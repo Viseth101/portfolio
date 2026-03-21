@@ -7,6 +7,10 @@
  * - Uses a responsive card grid with consistent visual treatment across light/dark themes.
  */
 import { projects } from "@/data/portfolio-data";
+import ProjectModal from "@/components/ui/ProjectModal";
+import type { Project } from "@/types";
+import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 type ProjectKind = "featured" | "course" | "coming-soon";
 
@@ -35,6 +39,8 @@ function badgeLabel(kind: ProjectKind): string {
 }
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <section id="projects" className="border-b border-slate-200 px-6 py-20 dark:border-border/60 sm:px-8 lg:px-0">
       <div className="mx-auto w-full max-w-6xl">
@@ -52,6 +58,9 @@ export default function Projects() {
           {projects.map((project) => {
             const kind = getProjectKind(project.id);
             const isComingSoon = kind === "coming-soon";
+            const isThreatwatch = project.id === "threatwatch";
+            const isWcMap = project.id === "silapakorn-wc-map";
+            const canOpenDetails = isThreatwatch || isWcMap;
 
             return (
               <article
@@ -84,11 +93,28 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+
+                {canOpenDetails ? (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    className="mt-5 inline-flex min-h-11 items-center rounded-full border border-accent-primary/40 px-4 py-2 text-sm font-semibold text-accent-primary transition-colors hover:bg-accent-primary/10"
+                  >
+                    Show Details →
+                  </button>
+                ) : null}
               </article>
             );
           })}
         </div>
       </div>
+
+      {/* AnimatePresence keeps the modal mounted long enough for exit animations to play before unmount. */}
+      <AnimatePresence>
+        {selectedProject ? (
+          <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        ) : null}
+      </AnimatePresence>
     </section>
   );
 }

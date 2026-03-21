@@ -139,6 +139,7 @@ export default function Navbar() {
             <a
               href="/resume.pdf"
               download
+              aria-label="Download resume"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-xs font-semibold text-slate-800 transition-colors hover:bg-slate-100 dark:bg-background-card dark:text-text-primary dark:hover:bg-background-secondary"
             >
               <Download className="h-3.5 w-3.5" />
@@ -177,7 +178,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setMenuOpen(true)}
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white text-slate-700 transition-colors hover:bg-slate-100 dark:bg-background-card dark:text-text-primary dark:hover:bg-background-secondary"
-              aria-label="Open navigation menu"
+              aria-label="Open menu"
             >
               <Menu className="h-4 w-4" />
             </button>
@@ -208,7 +209,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => setMenuOpen(false)}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-white text-slate-700 dark:bg-background-card dark:text-text-primary"
-                  aria-label="Close navigation menu"
+                  aria-label="Close menu"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -243,6 +244,7 @@ export default function Navbar() {
                 <a
                   href="/resume.pdf"
                   download
+                  aria-label="Download resume"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-200 dark:bg-background-card dark:text-text-primary dark:hover:bg-background-card/80"
                   onClick={() => setMenuOpen(false)}
                 >

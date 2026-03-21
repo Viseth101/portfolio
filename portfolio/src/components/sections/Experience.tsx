@@ -24,25 +24,25 @@ const timelineItems: TimelineItemData[] = [
   {
     title: "Bachelor of Science in Computer Science",
     organization: "Silapakorn University",
-    date: "2023 — Present",
+    date: "2024 — Present",
     description:
       "Studying core CS fundamentals including data structures, algorithms, computer networks, and software engineering. Maintaining strong academic standing while building real projects outside coursework.",
     type: "education",
   },
   {
-    title: "ThreatWatch — AI Threat Intelligence Dashboard",
-    organization: "Personal Project",
-    date: "2024",
+    title: "Silapakorn Sanam Chan WC Map",
+    organization: "Course Project — Silapakorn University",
+    date: "2026",
     description:
-      "Built a full-stack cybersecurity platform with Next.js, FastAPI, and Google Gemini API. Features live CVE data, AI-generated threat summaries, and JWT authentication.",
+      "Built an interactive campus map with Node.js, Express, Google Maps API, and MySQL. Deployed live with Cloudinary for image storage.",
     type: "project",
   },
   {
-    title: "Silapakorn Sanam Chan WC Map",
-    organization: "Course Project — Silapakorn University",
-    date: "2024",
+    title: "ThreatWatch — AI Threat Intelligence Dashboard",
+    organization: "Personal Project",
+    date: "2026",
     description:
-      "Built an interactive campus map with Node.js, Express, Google Maps API, and MySQL. Deployed live with Cloudinary for image storage.",
+      "Built a full-stack cybersecurity platform with Next.js, FastAPI, and Google Gemini API. Features live CVE data, AI-generated threat summaries, and JWT authentication.",
     type: "project",
   },
   {

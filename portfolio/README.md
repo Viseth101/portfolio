@@ -71,3 +71,13 @@ This portfolio now supports a headless CMS using Sanity. That means you can upda
 1. Open the **Profile** document.
 2. Edit `resumeUrl` with your hosted PDF link (Google Drive, Dropbox, etc.).
 3. Publish changes.
+
+## Deployment Checklist
+
+- [ ] Replace resume placeholder with real resume.pdf in /public
+- [ ] Set all environment variables in Vercel dashboard
+- [ ] Replace LinkedIn URL with real profile URL if changed
+- [ ] Update sitemap.ts with real domain after deployment
+- [ ] Log into Sanity Studio at /studio and add real content
+- [ ] Test contact form submission end to end
+- [ ] Test on mobile device before sharing with recruiters

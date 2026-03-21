@@ -12,6 +12,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   background: #f8fafc;
   color: #0f172a;
@@ -24,8 +29,13 @@ body {
 
 /* Thin accent scrollbar for modern browsers. */
 * {
+  box-sizing: border-box;
   scrollbar-width: thin;
   scrollbar-color: #7c3aed #e2e8f0;
+}
+
+img {
+  max-width: 100%;
 }
 
 .dark * {

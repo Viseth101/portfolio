@@ -134,7 +134,7 @@ export default function Hero() {
             href="https://github.com/Viseth101"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
+            aria-label="Visit GitHub profile"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-text-secondary transition-colors hover:text-accent-primary"
           >
             <Github className="h-5 w-5" />
@@ -143,14 +143,14 @@ export default function Hero() {
             href="https://www.linkedin.com/in/udtarakviseth-lay-774858373/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
+            aria-label="Visit LinkedIn profile"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-text-secondary transition-colors hover:text-accent-primary"
           >
             <Linkedin className="h-5 w-5" />
           </a>
           <a
             href="mailto:udtarakvisethlay@gmail.com"
-            aria-label="Email"
+            aria-label="Send email"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-text-secondary transition-colors hover:text-accent-primary"
           >
             <Mail className="h-5 w-5" />
