@@ -21,7 +21,7 @@ export default function ProgressBar() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed left-0 top-0 z-[90] h-[3px] bg-[#7c3aed]"
+      className="pointer-events-none fixed left-0 top-0 z-[90] h-[3px] bg-accent-primary"
       initial={{ width: "0%", opacity: 1 }}
       animate={{ width: "100%", opacity: isVisible ? 1 : 0 }}
       transition={{

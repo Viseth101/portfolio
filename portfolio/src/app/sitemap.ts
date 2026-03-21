@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Replace with your real production domain after deployment.
+  // Replace with real Vercel URL after deploy.
   const baseUrl = "https://udtarakviseth.dev";
 
   return [

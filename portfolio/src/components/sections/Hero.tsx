@@ -111,7 +111,7 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#7c3aed] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#6d28d9] sm:w-auto"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-accent-primary px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-glow sm:w-auto"
           >
             View My Work
           </a>

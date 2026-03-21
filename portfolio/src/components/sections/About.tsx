@@ -22,7 +22,7 @@ export default function About() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto"
         >
-          <div className="flex h-56 w-56 items-center justify-center rounded-[2rem] border border-accent-primary/50 bg-gradient-to-br from-[#7c3aed] to-[#a78bfa] shadow-lg shadow-accent-primary/20">
+          <div className="flex h-56 w-56 items-center justify-center rounded-[2rem] border border-accent-primary/50 bg-gradient-to-br from-accent-primary to-accent-secondary shadow-lg shadow-accent-primary/20">
             <span className="text-6xl font-extrabold tracking-tight text-white">UL</span>
           </div>
         </motion.div>
