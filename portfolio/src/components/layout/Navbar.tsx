@@ -93,7 +93,11 @@ export default function Navbar() {
   const linkClass = (id: string) =>
     cn(
       "text-sm font-medium transition-colors hover:text-accent-primary",
-      activeSection === id ? "text-accent-primary" : "text-slate-600 dark:text-text-secondary"
+      activeSection === id
+        ? "text-accent-primary"
+        : isScrolled
+          ? "text-slate-700 dark:text-text-secondary"
+          : "text-white/85"
     );
 
   return (
@@ -110,8 +114,10 @@ export default function Navbar() {
       >
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a href="#about" className="text-base tracking-tight">
-            <span className="font-bold text-slate-900 dark:text-text-primary">Viseth</span>{" "}
-            <span className="font-medium text-accent-primary">Sok</span>
+            <span className={cn("font-bold", isScrolled ? "text-slate-900 dark:text-text-primary" : "text-white")}>
+              Udtarakviseth
+            </span>{" "}
+            <span className="font-medium text-accent-primary">Lay</span>
           </a>
 
           <nav className="hidden items-center gap-6 md:flex" aria-label="Desktop navigation">

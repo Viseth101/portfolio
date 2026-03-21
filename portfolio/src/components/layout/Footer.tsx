@@ -19,7 +19,7 @@ export default function Footer() {
     <footer className="border-t border-border bg-slate-100/70 dark:bg-background-secondary/60">
       <div className="mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-3 lg:items-center lg:px-8">
         <div>
-          <p className="text-lg font-semibold text-slate-900 dark:text-text-primary">Viseth Sok</p>
+          <p className="text-lg font-semibold text-slate-900 dark:text-text-primary">Udtarakviseth Lay</p>
           <p className="mt-1 text-sm text-slate-600 dark:text-text-secondary">
             Building secure, intelligent, and user-focused full-stack products.
           </p>

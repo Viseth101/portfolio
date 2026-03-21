@@ -1,6 +1,17 @@
+"use client";
+
+import Hero from "@/components/sections/Hero";
+import { useEffect } from "react";
+
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div className="pt-16">
+    <div className="overflow-x-hidden">
+      <Hero />
+
       <section
         id="about"
         className="flex min-h-screen items-center justify-center border-b border-border/60 px-6"
