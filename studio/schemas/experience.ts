@@ -4,6 +4,3 @@
 */
 
 export const experienceSchema = {};
-    defineField({ name: "order", title: "Display Order", type: "number" }),
-  ],
-});
