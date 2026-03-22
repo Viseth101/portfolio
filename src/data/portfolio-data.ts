@@ -65,7 +65,7 @@ export const projects: Project[] = [
       "Mobile responsive design",
     ],
     githubUrl: "https://github.com/Viseth101/threatwatch",
-    liveUrl: "https://threatwatch-demo.vercel.app",
+    liveUrl: "https://threat-watch-two.vercel.app/",
     status: "live",
     type: "featured",
     challenges:
