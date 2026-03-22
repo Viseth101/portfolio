@@ -8,6 +8,7 @@
  */
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { siteConfig } from "@/data/portfolio-data";
 
 export default function About() {
   return (
@@ -51,7 +52,7 @@ export default function About() {
 
           <div className="mt-6 space-y-4 text-base leading-8 text-slate-700 dark:text-text-secondary">
             <p>
-              I&apos;m a Computer Science sophomore at Silapakorn University, passionate about
+              I&apos;m a Computer Science sophomore at {siteConfig.university}, passionate about
               building full-stack applications that solve real problems.
             </p>
             <p>
@@ -80,7 +81,7 @@ export default function About() {
           </div>
 
           <a
-            href="/resume.pdf"
+            href={siteConfig.resumeUrl}
             download
             className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:border-accent-primary hover:text-accent-primary dark:border-border dark:text-text-primary"
           >

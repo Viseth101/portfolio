@@ -12,18 +12,12 @@ import { motion } from "framer-motion";
 import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+import { siteConfig } from "@/data/portfolio-data";
 import { useTypewriter } from "@/hooks/useTypewriter";
-
-const roles = [
-  "Full-Stack Developer",
-  "AI/ML Engineer",
-  "Cybersecurity Enthusiast",
-  "Open Source Builder",
-];
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { text } = useTypewriter({ words: roles });
+  const { text } = useTypewriter({ words: siteConfig.roles });
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -77,7 +71,7 @@ export default function Hero() {
           transition={{ duration: 0.45, delay: 0.2 }}
           className="text-4xl font-extrabold tracking-tight text-text-primary sm:text-6xl lg:text-7xl"
         >
-          Udtarakviseth <span className="gradient-text">Lay</span>
+          {siteConfig.firstName} <span className="gradient-text">{siteConfig.lastName}</span>
         </motion.h1>
 
         <motion.p
@@ -99,7 +93,7 @@ export default function Hero() {
           className="mt-6 max-w-3xl text-base leading-8 text-text-secondary sm:text-lg"
         >
           I build full-stack applications at the intersection of AI and security. Currently
-          seeking Summer 2026 internship opportunities in software engineering, AI, or
+          seeking {siteConfig.lookingFor} in software engineering, AI, or
           cybersecurity.
         </motion.p>
 
@@ -116,7 +110,7 @@ export default function Hero() {
             View My Work
           </a>
           <a
-            href="/resume.pdf"
+            href={siteConfig.resumeUrl}
             download
             className="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-accent-primary hover:text-accent-primary sm:w-auto"
           >
@@ -131,7 +125,7 @@ export default function Hero() {
           className="mt-8 flex items-center justify-center gap-3"
         >
           <a
-            href="https://github.com/Viseth101"
+            href={siteConfig.github}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit GitHub profile"
@@ -140,7 +134,7 @@ export default function Hero() {
             <Github className="h-5 w-5" />
           </a>
           <a
-            href="https://www.linkedin.com/in/udtarakviseth-lay-774858373/"
+            href={siteConfig.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit LinkedIn profile"
@@ -149,7 +143,7 @@ export default function Hero() {
             <Linkedin className="h-5 w-5" />
           </a>
           <a
-            href="mailto:udtarakvisethlay@gmail.com"
+            href={`mailto:${siteConfig.email}`}
             aria-label="Send email"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-text-secondary transition-colors hover:text-accent-primary"
           >

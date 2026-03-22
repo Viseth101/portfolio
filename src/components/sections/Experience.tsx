@@ -96,12 +96,7 @@ function TimelineEntry({ item, index }: { item: TimelineItemData; index: number 
         initial={{ opacity: 0, x: 38 }}
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 38 }}
         transition={{ duration: 0.55, ease: "easeOut", delay: index * 0.15 }}
-        className={[
-          "relative rounded-2xl border bg-white p-5 backdrop-blur-sm md:col-start-3 dark:bg-background-card/85",
-          item.isPlaceholder
-            ? "border-dashed border-slate-300/90 opacity-85 dark:border-border/80"
-            : "border-slate-200 dark:border-border/90",
-        ].join(" ")}
+        className="relative rounded-2xl border border-slate-200 bg-white p-5 backdrop-blur-sm md:col-start-3 dark:border-border/90 dark:bg-background-card/85"
       >
         <div className="mb-3 flex items-start justify-between gap-3">
           <div>

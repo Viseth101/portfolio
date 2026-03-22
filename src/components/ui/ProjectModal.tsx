@@ -226,7 +226,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <section>
             <h4 className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-text-muted">Challenges & Learnings</h4>
             <blockquote className="mt-4 border-l-4 border-accent-primary bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700 dark:bg-background-secondary/60 dark:text-text-secondary">
-              Add your specific challenges and learnings here. This section impresses interviewers — be honest and specific about what was hard.
+              {project.challenges || "Add specific challenges and learnings for this project"}
             </blockquote>
           </section>
         </div>

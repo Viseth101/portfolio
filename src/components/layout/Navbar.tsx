@@ -13,8 +13,19 @@
  */
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, Menu, Moon, Sun, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
+import { siteConfig } from "@/data/portfolio-data";
+import {
+  AVAILABILITY_MODE_EVENT,
+  AVAILABILITY_MODE_STORAGE_KEY,
+  AvailabilityMode,
+  OPEN_TO_WORK_EVENT,
+  OPEN_TO_WORK_STORAGE_KEY,
+  readAvailabilityModePreference,
+  readOpenToWorkPreference,
+} from "@/lib/open-to-work";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
@@ -31,13 +42,17 @@ const navItems: NavItem[] = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [isDark, setIsDark] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
+  const [openToWork, setOpenToWork] = useState(siteConfig.openToWork);
+  const [availabilityMode, setAvailabilityMode] = useState<AvailabilityMode>("internships");
 
   const sectionIds = useMemo(() => navItems.map((item) => item.id), []);
+  const shouldUseSolidHeader = isScrolled || pathname.startsWith("/admin");
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 12);
@@ -53,6 +68,51 @@ export default function Navbar() {
     document.documentElement.classList.toggle("dark", darkPreferred);
     setIsDark(darkPreferred);
     setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    setOpenToWork(readOpenToWorkPreference(siteConfig.openToWork));
+    setAvailabilityMode(readAvailabilityModePreference("internships"));
+
+    const handleStorage = (event: StorageEvent) => {
+      if (!event.key || event.key === OPEN_TO_WORK_STORAGE_KEY) {
+        setOpenToWork(readOpenToWorkPreference(siteConfig.openToWork));
+      }
+
+      if (!event.key || event.key === AVAILABILITY_MODE_STORAGE_KEY) {
+        setAvailabilityMode(readAvailabilityModePreference("internships"));
+      }
+    };
+
+    const handleOpenToWorkChange = (event: Event) => {
+      const customEvent = event as CustomEvent<boolean>;
+      if (typeof customEvent.detail === "boolean") {
+        setOpenToWork(customEvent.detail);
+        return;
+      }
+
+      setOpenToWork(readOpenToWorkPreference(siteConfig.openToWork));
+    };
+
+    const handleAvailabilityModeChange = (event: Event) => {
+      const customEvent = event as CustomEvent<AvailabilityMode>;
+      if (customEvent.detail === "work" || customEvent.detail === "internships") {
+        setAvailabilityMode(customEvent.detail);
+        return;
+      }
+
+      setAvailabilityMode(readAvailabilityModePreference("internships"));
+    };
+
+    window.addEventListener("storage", handleStorage);
+    window.addEventListener(OPEN_TO_WORK_EVENT, handleOpenToWorkChange as EventListener);
+    window.addEventListener(AVAILABILITY_MODE_EVENT, handleAvailabilityModeChange as EventListener);
+
+    return () => {
+      window.removeEventListener("storage", handleStorage);
+      window.removeEventListener(OPEN_TO_WORK_EVENT, handleOpenToWorkChange as EventListener);
+      window.removeEventListener(AVAILABILITY_MODE_EVENT, handleAvailabilityModeChange as EventListener);
+    };
   }, []);
 
   useEffect(() => {
@@ -95,10 +155,16 @@ export default function Navbar() {
       "text-sm font-medium transition-colors hover:text-accent-primary",
       activeSection === id
         ? "text-accent-primary"
-        : isScrolled
+        : shouldUseSolidHeader
           ? "text-slate-700 dark:text-text-secondary"
           : "text-white/85"
     );
+
+  const availabilityLabel = availabilityMode === "work" ? "Open to work" : "Open to internships";
+
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
 
   return (
     <>
@@ -108,16 +174,16 @@ export default function Navbar() {
         transition={{ duration: 0.45, ease: "easeOut" }}
         className={cn(
           "fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300",
-          isScrolled &&
+          shouldUseSolidHeader &&
             "border-border/70 bg-slate-100/75 backdrop-blur-lg dark:bg-background-secondary/65"
         )}
       >
         <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a href="#about" className="text-base tracking-tight">
-            <span className={cn("font-bold", isScrolled ? "text-slate-900 dark:text-text-primary" : "text-white")}>
-              Udtarakviseth
+            <span className={cn("font-bold", shouldUseSolidHeader ? "text-slate-900 dark:text-text-primary" : "text-white")}>
+              {siteConfig.firstName}
             </span>{" "}
-            <span className="font-medium text-accent-primary">Lay</span>
+            <span className="font-medium text-accent-primary">{siteConfig.lastName}</span>
           </a>
 
           <nav className="hidden items-center gap-6 md:flex" aria-label="Desktop navigation">
@@ -129,15 +195,17 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-3 md:flex">
-            <div className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1">
-              <span className="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
-              <span className="text-xs font-medium text-emerald-600 dark:text-emerald-300">
-                Open to internships
-              </span>
-            </div>
+            {openToWork && (
+              <div className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1">
+                <span className="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
+                <span className="text-xs font-medium text-emerald-600 dark:text-emerald-300">
+                  {availabilityLabel}
+                </span>
+              </div>
+            )}
 
             <a
-              href="/resume.pdf"
+              href={siteConfig.resumeUrl}
               download
               aria-label="Download resume"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-xs font-semibold text-slate-800 transition-colors hover:bg-slate-100 dark:bg-background-card dark:text-text-primary dark:hover:bg-background-secondary"
@@ -234,12 +302,14 @@ export default function Navbar() {
               </nav>
 
               <div className="mt-auto space-y-4">
-                <div className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-2">
-                  <span className="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
-                  <span className="text-xs font-medium text-emerald-600 dark:text-emerald-300">
-                    Open to internships
-                  </span>
-                </div>
+                {openToWork && (
+                  <div className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-2">
+                    <span className="status-dot h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden />
+                    <span className="text-xs font-medium text-emerald-600 dark:text-emerald-300">
+                      {availabilityLabel}
+                    </span>
+                  </div>
+                )}
 
                 <a
                   href="/resume.pdf"

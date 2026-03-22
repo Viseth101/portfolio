@@ -19,22 +19,23 @@ type StatCardData = {
 
 function buildStatCards(isDark: boolean): StatCardData[] {
   const username = "Viseth101";
+  const currentYear = new Date().getFullYear();
   const statsBg = isDark ? "161a29" : "f8fafc";
   const statsText = isDark ? "94a3b8" : "334155";
   const streakNums = isDark ? "f8fafc" : "0f172a";
 
   return [
     {
-      title: "GitHub Stats",
-      src: `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_border=true&cache_seconds=3600&bg_color=${statsBg}&title_color=7c3aed&icon_color=a78bfa&text_color=${statsText}&ring_color=7c3aed`,
+      title: `${currentYear} Live Contributions`,
+      src: `https://github-contributions-api.deno.dev/${username}.svg?y=${currentYear}`,
       fallbackSrc:
-        `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_border=true`,
+        `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&hide_border=true&cache_seconds=300&include_all_commits=true&bg_color=${statsBg}&title_color=7c3aed&icon_color=a78bfa&text_color=${statsText}&ring_color=7c3aed`,
       externalUrl: `https://github.com/${username}`,
-      alt: "Viseth101 GitHub overall statistics",
+      alt: `Viseth101 ${currentYear} live contribution activity`,
     },
     {
       title: "Top Languages",
-      src: `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&hide_border=true&cache_seconds=3600&bg_color=${statsBg}&title_color=7c3aed&text_color=${statsText}`,
+      src: `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&hide_border=true&cache_seconds=300&bg_color=${statsBg}&title_color=7c3aed&text_color=${statsText}`,
       fallbackSrc:
         `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&hide_border=true`,
       externalUrl: `https://github.com/${username}?tab=repositories`,
@@ -42,8 +43,8 @@ function buildStatCards(isDark: boolean): StatCardData[] {
     },
     {
       title: "GitHub Streak",
-      src: `https://streak-stats.demolab.com?user=${username}&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}`,
-      fallbackSrc: `https://github-readme-streak-stats.herokuapp.com?user=${username}&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}`,
+      src: `https://streak-stats.demolab.com?user=${username}&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}&cache_seconds=300`,
+      fallbackSrc: `https://github-readme-streak-stats.herokuapp.com?user=${username}&hide_border=true&background=${statsBg}&ring=7c3aed&fire=a78bfa&currStreakLabel=a78bfa&sideLabels=${statsText}&dates=${statsText}&sideNums=${streakNums}&currStreakNum=${streakNums}&cache_seconds=300`,
       externalUrl: `https://github.com/${username}`,
       alt: "Viseth101 GitHub contribution streak",
     },

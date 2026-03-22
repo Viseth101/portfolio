@@ -1,33 +1,9 @@
 /*
-  Headless CMS note:
-  A headless CMS keeps project content editable outside code deployments.
-  Sanity works well for Next.js portfolios because schemas map cleanly to reusable UI sections.
+  Sanity schema - no longer used
+  Project data now comes from projects array in src/data/portfolio-data.ts
 */
-import { defineField, defineType } from "sanity";
 
-export const projectSchema = defineType({
-  name: "project",
-  title: "Project",
-  type: "document",
-  fields: [
-    defineField({ name: "title", title: "Title", type: "string", validation: (rule) => rule.required() }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: { source: "title", maxLength: 96 },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({ name: "description", title: "Description", type: "string", validation: (rule) => rule.required() }),
-    defineField({
-      name: "longDescription",
-      title: "Long Description",
-      type: "text",
-      rows: 6,
-      validation: (rule) => rule.required(),
-    }),
-    defineField({ name: "tech", title: "Tech Stack", type: "array", of: [{ type: "string" }] }),
-    defineField({ name: "features", title: "Features", type: "array", of: [{ type: "string" }] }),
+export const projectSchema = {};
     defineField({ name: "githubUrl", title: "GitHub URL", type: "url" }),
     defineField({ name: "liveUrl", title: "Live URL", type: "url" }),
     defineField({
