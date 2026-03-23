@@ -14,6 +14,7 @@ import { useEffect, useRef } from "react";
 
 import { siteConfig } from "@/data/portfolio-data";
 import { useTypewriter } from "@/hooks/useTypewriter";
+import { RenderGrid } from "./RenderGrid";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -54,7 +55,9 @@ export default function Hero() {
       <div className="hero-dot-grid absolute inset-0 opacity-[0.15]" aria-hidden />
       <div className="hero-spotlight absolute inset-0" aria-hidden />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center py-16 text-center">
+      <RenderGrid className="absolute -right-[40%] sm:-right-[20%] lg:-right-[5%] xl:right-0 top-1/2 -translate-y-1/2 mt-[10px] z-0 opacity-30 lg:opacity-100" />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center py-16 text-center pointer-events-none [&>*]:pointer-events-auto">
         {/* Stagger sequence: each block uses the same motion curve with +0.1s incremental delays for a smooth reveal rhythm. */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}

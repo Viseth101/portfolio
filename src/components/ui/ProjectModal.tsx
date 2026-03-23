@@ -120,30 +120,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             <div className="flex items-center gap-2">
-              {hasGithub ? (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 bg-slate-100 text-slate-700 transition-colors hover:border-accent-primary hover:text-accent-secondary dark:border-border dark:bg-background-secondary dark:text-text-secondary"
-                  aria-label="View project source on GitHub"
-                >
-                  <Github className="h-4 w-4" />
-                </a>
-              ) : null}
-
-              {hasLive ? (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 bg-slate-100 text-slate-700 transition-colors hover:border-accent-primary hover:text-accent-secondary dark:border-border dark:bg-background-secondary dark:text-text-secondary"
-                  aria-label="Open live project"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              ) : null}
-
               <button
                 ref={closeButtonRef}
                 type="button"
@@ -232,12 +208,35 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </div>
 
         <footer className="border-t border-slate-200 px-5 py-4 sm:px-6 dark:border-border/70">
-          <div className="flex items-center justify-between gap-3">
-            <p className="text-sm text-slate-700 dark:text-text-secondary">Want to know more?</p>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              {hasGithub ? (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 bg-slate-100 text-slate-700 transition-colors hover:border-accent-primary hover:text-accent-secondary dark:border-border dark:bg-background-secondary dark:text-text-secondary"
+                  aria-label="View project source on GitHub"
+                >
+                  <Github className="h-4 w-4" />
+                </a>
+              ) : null}
+              {hasLive ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-300 bg-slate-100 text-slate-700 transition-colors hover:border-accent-primary hover:text-accent-secondary dark:border-border dark:bg-background-secondary dark:text-text-secondary"
+                  aria-label="Open live project"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              ) : null}
+            </div>
             <button
               type="button"
               onClick={handleLetsTalk}
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-glow"
+              className="ml-auto inline-flex min-h-11 items-center justify-center rounded-full bg-accent-primary px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-glow"
             >
               Let&apos;s Talk →
             </button>
